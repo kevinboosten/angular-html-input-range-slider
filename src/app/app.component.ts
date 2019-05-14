@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: [ './app.component.css' ]
 })
 export class AppComponent  {
-  name = 'Angular';
+  name = 'Angular HTML <input type"range"> example';
+
+  value = 50;
+  max = 150;
 }

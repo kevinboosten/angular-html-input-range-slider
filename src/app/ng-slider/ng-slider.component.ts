@@ -7,22 +7,24 @@ import {Input,  Component, OnInit, HostListener, ElementRef } from '@angular/cor
 })
 export class NgSliderComponent implements OnInit {
 
-  @Input() maxValue = 50;
+  @Input() value = 0;
+  @Input() max = 100;
 
   constructor(private elementRef: ElementRef) { }
 
   ngOnInit() {
+    this.setBackground(this.value, this.max);
   }
 
   @HostListener('input', ['$event'])
   onEvent(event) {
     console.log('input', event.target.value);
-    this.setBackground(event.target.value, this.maxValue);
+    this.setBackground(event.target.value, this.max);
   }
 
   setBackground(newValue:number, maxValue){
     if(this.elementRef.nativeElement){
-      const value = (newValue / this.maxValue) * 100;
+      const value = (newValue / this.max) * 100;
       console.log('value: ', value);
       this.elementRef.nativeElement.style.setProperty('--left', `${value}%`);
     }
